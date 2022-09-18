@@ -13,10 +13,10 @@
              with font-awesome or any other icon font library -->
       
         <li class="nav-item">
-          <a href="{{route('category.index')}}" class="nav-link">
+          <a href="{{ route('admin.category.index') }}" class="nav-link">
             <i class="nav-icon far fa-image"></i>
             <p>
-              Gallery
+              {{ __('Галерея')}}
             </p>
           </a>
         </li>

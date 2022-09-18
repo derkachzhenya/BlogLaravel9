@@ -26,10 +26,7 @@
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
       <div class="row">
-        <div class="col-1">
-          <a class="btn btn-block btn-secondary" href="{{ route('admin.category.create') }}">{{ __('Создать') }}</a>
-          
-        </div>
+        
         <div class="col-12 mt-3">
           {{ __('Категории') }}
         </div>
@@ -44,20 +41,21 @@
                 <thead>
                   <tr>
                     <th>{{ __('Номер') }}</th>
-                    <th>{{ __('Категория') }}</th>
-                    <th>{{ __('Действия') }}</th>
+                    <td>{{ $category->id }}</td>
+                    
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($categories as $category)
+                 
                       
                   
                   <tr>
-                    <td>{{ $category->id }}</td>
+                    
+                    <th>{{ __('Категория') }}</th>
                     <td>{{ $category->title }}</td>
-                    <td><a class="far fa-eye" href="{{ route('admin.category.show', $category->id)}}"></a></td>
+                    
                   </tr>
-                  @endforeach
+                 
                  </tbody>
               </table>
             </div>
