@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">{{ __('Категории') }}</h1>
+                        <h1 class="m-0">{{ __('Посты') }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -26,19 +26,26 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-4">
-                        <form action="{{ route('admin.category.store') }}" method="POST">
+                        <form action="{{ route('admin.post.update', $post->id) }}" method="POST">
                             @csrf
-
+                            @method('PATCH')
                             <div class="form-group">
-                                <label for="title">{{ __('Добавление категории') }}</label>
+                                <label for="title">{{ __('Редактирование заголовка') }}</label>
                                 <input type="text" name="title" class="form-control"
-                                    placeholder="{{ __('Название категории') }}">
+                                    value="{{ __($post->title) }}">
                                 @error('title')
+                                    <div class="text-danger">{{ __('Введите текст') }}</div>
+                                @enderror
+
+                                <label for="content">{{ __('Редактирование контента') }}</label>
+                                <input type="text" name="content" class="form-control"
+                                    value="{{ __($post->content) }}">
+                                @error('content')
                                     <div class="text-danger">{{ __('Введите текст') }}</div>
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-block btn-secondary col-3">Создать</button>
+                            <button type="submit" class="btn btn-block btn-secondary col-4">Редактировать</button>
 
                         </form>
                     </div>

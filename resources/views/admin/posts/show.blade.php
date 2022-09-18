@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">{{ __('Категории') }}</h1>
+                        <h1 class="m-0">{{ __('Посты') }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -27,11 +27,21 @@
                 <div class="row">
                     <div class="col-1">
                         <a class="btn btn-block btn-secondary"
-                            href="{{ route('admin.category.create') }}">{{ __('Создать') }}</a>
+                            href="{{ route('admin.post.index') }}">{{ __('Назад') }}</a>
 
                     </div>
-                    <div class="col-12 mt-3">
-                        {{ __('Категории') }}
+                    <div class="col-12 mt-3 d-flex align-items-center">
+                       <div class="mr-3">{{ __('Посты') }} </div>
+
+                        <div class="mr-2"><a class="fas fa-pen" href="{{ route('admin.post.edit', $post->id) }}"></a></div> 
+                        <td> <form action="{{ route('admin.post.destroy', $post->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="border-0 bg-transparent">
+                            <i class="fas fa-trash text-danger" role="button"></i>
+                        </button>
+                              
+                            </form> </td>
                     </div>
                 </div>
                 <div class="row">
@@ -44,29 +54,26 @@
                                     <thead>
                                         <tr>
                                             <th>{{ __('Номер') }}</th>
-                                            <th>{{ __('Категория') }}</th>
-                                            <th colspan="3">{{ __('Действия') }}</th>
+                                            <td>{{ $post->id }}</td>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($categories as $category)
-                                            <tr>
-                                                <td>{{ $category->id }}</td>
-                                                <td>{{ $category->title }}</td>
-                                                <td><a class="far fa-eye" href="{{ route('admin.category.show', $category->id) }}"></a></td>
-                                                <td><a class="fas fa-pen" href="{{ route('admin.category.edit', $category->id) }}"></a></td>  
-                                                <td>
-                                                <form action="{{ route('admin.category.destroy', $category->id) }}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="border-0 bg-transparent">
-                                                    <i class="fas fa-trash text-danger" role="button"></i>
-                                                </button>
-                                                      
-                                                    </form> 
-                                                </td>  
-                                            </tr>
-                                        @endforeach
+
+                                        <tr>
+
+                                            <th>{{ __('Тег') }}</th>
+                                            <td>{{ $post->title }}</td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <th>{{ __('Контент') }}</th>
+                                            <td>{{ $post->content }}</td>
+
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>

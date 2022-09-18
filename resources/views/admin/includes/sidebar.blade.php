@@ -16,7 +16,25 @@
           <a href="{{ route('admin.category.index') }}" class="nav-link">
             <i class="nav-icon far fa-image"></i>
             <p>
-              {{ __('Галерея')}}
+              {{ __('Категории')}}
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{ route('admin.tag.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>
+              {{ __('Теги')}}
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{ route('admin.post.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-clipboard"></i>
+            <p>
+              {{ __('Посты')}}
             </p>
           </a>
         </li>

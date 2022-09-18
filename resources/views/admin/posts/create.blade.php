@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">{{ __('Категории') }}</h1>
+                        <h1 class="m-0">Dashboard</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -26,14 +26,21 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-4">
-                        <form action="{{ route('admin.category.store') }}" method="POST">
+                        <form action="{{ route('admin.post.store') }}" method="POST">
                             @csrf
 
                             <div class="form-group">
-                                <label for="title">{{ __('Добавление категории') }}</label>
+                                <label for="title">{{ __('Добавление тега') }}</label>
                                 <input type="text" name="title" class="form-control"
-                                    placeholder="{{ __('Название категории') }}">
+                                    placeholder="{{ __('Название тега') }}">
                                 @error('title')
+                                    <div class="text-danger">{{ __('Введите текст') }}</div>
+                                @enderror
+
+                                <label for="content">{{ __('Добавление тега') }}</label>
+                                <input type="text" name="content" class="form-control"
+                                    placeholder="{{ __('Название тега') }}">
+                                @error('content')
                                     <div class="text-danger">{{ __('Введите текст') }}</div>
                                 @enderror
                             </div>

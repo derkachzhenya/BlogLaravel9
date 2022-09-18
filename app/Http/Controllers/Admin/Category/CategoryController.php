@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-use Illuminate\Http\Request;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -40,20 +39,23 @@ class CategoryController extends Controller
     }
 
     
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
   
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $data=$request->validated();
+        $category->update($data);
+        return view('admin.categories.show', compact('category'));
     }
 
   
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('admin.category.index', compact('category'));
     }
 }

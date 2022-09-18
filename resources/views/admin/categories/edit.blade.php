@@ -26,19 +26,19 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-4">
-                        <form action="{{ route('admin.category.store') }}" method="POST">
+                        <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
                             @csrf
-
+                            @method('PATCH')
                             <div class="form-group">
-                                <label for="title">{{ __('Добавление категории') }}</label>
+                                <label for="title">{{ __('Редактирование категории') }}</label>
                                 <input type="text" name="title" class="form-control"
-                                    placeholder="{{ __('Название категории') }}">
+                                    value="{{ __($category->title) }}">
                                 @error('title')
                                     <div class="text-danger">{{ __('Введите текст') }}</div>
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-block btn-secondary col-3">Создать</button>
+                            <button type="submit" class="btn btn-block btn-secondary col-4">Редактировать</button>
 
                         </form>
                     </div>
