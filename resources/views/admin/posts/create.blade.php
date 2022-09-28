@@ -30,12 +30,14 @@
                                 <input type="text" name="title" class="form-control"
                                     placeholder="{{ __('Название тега') }}" value="{{ old('title') }}">
                                 @error('title')
-                                    <div class="text-danger">{{ __('Введите текст') }} </div>
+                                    <div class="text-danger">{{ __($message) }} </div>
                                 @enderror
+
+                                
                                 <div class="form-group mt-3">
                                     <textarea id="summernote" name="content"> {{ old('content') }}</textarea>
                                     @error('content')
-                                        <div class="text-danger">{{ __('Введите текст') }}</div>
+                                        <div class="text-danger">{{ __($message) }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
@@ -50,9 +52,12 @@
                                         </div>
                                     </div>
                                     @error('preview_image')
-                                        <div class="text-danger">{{ __('Введите текст') }}</div>
+                                        <div class="text-danger">{{ __($message) }}</div>
                                     @enderror
                                 </div>
+
+
+
                                 <div class="form-group">
                                     <label for="exampleInputFile">{{ __('Выбрать главное изображение') }}</label>
                                     <div class="input-group">
@@ -65,9 +70,11 @@
                                         </div>
                                     </div>
                                     @error('main_image')
-                                        <div class="text-danger">{{ __('Введите текст') }}</div>
+                                        <div class="text-danger">{{ __($message) }}</div>
                                     @enderror
                                 </div>
+
+
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label>{{ __('Выберите категорию') }}</label>
@@ -78,6 +85,9 @@
                                                     {{ $category->title }}</option>
                                             @endforeach
                                         </select>
+                                        @error('category_id')
+                                        <div class="text-danger">{{ __($message) }}</div>
+                                    @enderror
                                     </div>
                                 </div>
                             </div>
@@ -91,6 +101,9 @@
                                             value="{{ $tag->id }}">{{ $tag->title }}</option>
                                     @endforeach
                                 </select>
+                                @error('tag_ids')
+                                        <div class="text-danger">{{ __($message) }}</div>
+                                    @enderror
                             </div>
                             <div class="form-group">
                                 <button type="submit"

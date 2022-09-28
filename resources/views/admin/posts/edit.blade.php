@@ -34,13 +34,13 @@
                                 <input type="text" name="title" class="form-control"
                                     placeholder="{{ __('Название тега') }}" value="{{ $post->title }}">
                                 @error('title')
-                                    <div class="text-danger">{{ __('Введите текст') }} </div>
+                                    <div class="text-danger">{{ __($message) }} </div>
                                 @enderror
 
                                 <div class="form-group mt-3">
                                     <textarea id="summernote" name="content"> {{ $post->content }}</textarea>
                                     @error('content')
-                                        <div class="text-danger">{{ __('Введите текст') }}</div>
+                                        <div class="text-danger">{{ __($message) }}</div>
                                     @enderror
                                 </div>
 
@@ -63,7 +63,7 @@
 
                                     </div>
                                     @error('preview_image')
-                                        <div class="text-danger">{{ __('Введите текст') }}</div>
+                                        <div class="text-danger">{{ __($message) }}</div>
                                     @enderror
                                 </div>
 
@@ -82,7 +82,7 @@
                                         </div>
                                     </div>
                                     @error('main_image')
-                                        <div class="text-danger">{{ __('Введите текст') }}</div>
+                                        <div class="text-danger">{{ __($message) }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
@@ -96,6 +96,9 @@
                                             @endforeach
 
                                         </select>
+                                        @error('category_id')
+                                        <div class="text-danger">{{ __($message) }}</div>
+                                    @enderror
                                     </div>
 
                                 </div>
@@ -111,8 +114,10 @@
                                             value="{{ $tag->id }}">{{ $tag->title }}</option>
                                     @endforeach
 
-
                                 </select>
+                                @error('tag_ids')
+                                <div class="text-danger">{{ __($message) }}</div>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 <button type="submit"

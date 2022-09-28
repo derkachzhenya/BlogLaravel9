@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Main\AdminController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Tag\TagController;
 use App\Http\Controllers\Admin\Post\PostController;
+use App\Http\Controllers\Admin\Useradmin\UseradminController;
 
 
 
@@ -47,6 +48,16 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin' ], function() {
         Route::get('/{post}/edit', [PostController::class, 'edit'])->name('admin.post.edit');
         Route::patch('/{post}', [PostController::class, 'update'])->name('admin.post.update');
         Route::delete('/{post}', [PostController::class, 'destroy'])->name('admin.post.destroy');
+    });
+
+    Route::group(['namespace' => 'Useradmin', 'prefix'=>'useradmins'], function () {
+        Route::get('/', [UseradminController::class, 'index'])->name('admin.useradmin.index');
+        Route::get('/create', [UseradminController::class, 'create'])->name('admin.useradmin.create');
+        Route::post('/', [UseradminController::class, 'store'])->name('admin.useradmin.store');
+        Route::get('/{useradmin}', [UseradminController::class, 'show'])->name('admin.useradmin.show');
+        Route::get('/{useradmin}/edit', [UseradminController::class, 'edit'])->name('admin.useradmin.edit');
+        Route::patch('/{useradmin}', [UseradminController::class, 'update'])->name('admin.useradmin.update');
+        Route::delete('/{useradmin}', [UseradminController::class, 'destroy'])->name('admin.useradmin.destroy');
     });
 
 });
