@@ -24,16 +24,16 @@
                 <div class="row">
                     <div class="col-1">
                         <a class="btn btn-block btn-secondary"
-                            href="{{ route('admin.useradmin.index') }}">{{ __('Назад') }}</a>
+                            href="{{ route('admin.user.index') }}">{{ __('Назад') }}</a>
 
                     </div>
                     <div class="col-12 mt-3 d-flex align-items-center">
                         <div class="mr-3">{{ __('Пользователи') }} </div>
 
                         <div class="mr-2"><a class="fas fa-pen"
-                                href="{{ route('admin.useradmin.edit', $useradmin->id) }}"></a></div>
+                                href="{{ route('admin.user.edit', $user->id) }}"></a></div>
                         <td>
-                            <form action="{{ route('admin.useradmin.destroy', $useradmin->id) }}" method="post">
+                            <form action="{{ route('admin.user.destroy', $user->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="border-0 bg-transparent">
@@ -55,13 +55,13 @@
 
                                         <tr>
                                             <th>{{ __('Имя пользователя') }}</th>
-                                            <td>{{ $useradmin->name }}</td>
+                                            <td>{{ $user->name }}</td>
 
                                         </tr>
 
                                         <tr>
                                             <th>{{ __('Имейл') }}</th>
-                                            <td>{{ $useradmin->email }}</td>
+                                            <td>{{ $user->email }}</td>
 
                                         </tr>
                                     </tbody>

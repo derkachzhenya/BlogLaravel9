@@ -23,7 +23,7 @@
 
                 <div class="row">
                     <div class="col-4">
-                        <form action="{{ route('admin.useradmin.store') }}" method="POST">
+                        <form action="{{ route('admin.user.store') }}" method="POST">
                             @csrf
 
                             <div class="form-group">
@@ -49,9 +49,25 @@
                                 <label for="password">{{ __('Пароль') }}</label>
                                 <input type="text" name="password" class="form-control"
                                     placeholder="{{ __('Пароль') }}">
-                                @error('pasword')
+                                @error('password')
                                     <div class="text-danger">{{ __($message) }}</div>
                                 @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>{{ __('Выберите роль') }}</label>
+                                    <select name="role" class="form-control">
+                                        @foreach ($roles as $id=>$role)
+                                            <option value="{{ $id }}"
+                                                {{ $id == old('role') ? 'selected' : '' }}>
+                                                {{ $role }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('role')
+                                    <div class="text-danger">{{ __($message) }}</div>
+                                @enderror
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-block btn-secondary col-3">Создать</button>

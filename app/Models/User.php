@@ -12,11 +12,23 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const ROLE_ADMIN = 0;
+    const ROLE_READER = 1;
     
+    public static function getRoles()
+    {
+        return [
+            0 => 'Админ',
+            1 => 'Читатель',
+        ];
+    }
+
+    protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role',
     ];
 
    

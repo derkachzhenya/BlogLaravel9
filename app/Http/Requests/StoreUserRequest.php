@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUseradminRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
    
     public function authorize()
@@ -19,6 +19,7 @@ class StoreUseradminRequest extends FormRequest
             'name'=>'required|string',
             'email'=>'required|string|email|unique:users',
             'password'=>'required|string',
+            'role'=>'required|integer',
         ];
     }
 

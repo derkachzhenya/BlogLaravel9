@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-1">
                         <a class="btn btn-block btn-secondary"
-                            href="{{ route('admin.useradmin.create') }}">{{ __('Создать') }}</a>
+                            href="{{ route('admin.user.create') }}">{{ __('Создать') }}</a>
 
                     </div>
                     <div class="col-12 mt-3">
@@ -45,17 +45,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($useradmins as $useradmin)
+                                        @foreach ($users as $user)
                                             <tr>
                                                 
-                                                <td>{{ $useradmin->name }}</td>
-                                                <td>{{ $useradmin->email }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
                                                 <td><a class="far fa-eye"
-                                                        href="{{ route('admin.useradmin.show', $useradmin->id) }}"></a></td>
+                                                        href="{{ route('admin.user.show', $user->id) }}"></a></td>
                                                 <td><a class="fas fa-pen"
-                                                        href="{{ route('admin.useradmin.edit', $useradmin->id) }}"></a></td>
+                                                        href="{{ route('admin.user.edit', $user->id) }}"></a></td>
                                                 <td>
-                                                    <form action="{{ route('admin.useradmin.destroy', $useradmin->id) }}"
+                                                    <form action="{{ route('admin.user.destroy', $user->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('delete')

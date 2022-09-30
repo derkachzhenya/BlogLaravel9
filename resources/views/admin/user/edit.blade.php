@@ -1,8 +1,7 @@
 @extends('admin.layouts.main')
 @section('content')
-    
     <div class="content-wrapper">
-        
+
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -21,16 +20,16 @@
 
         <section class="content">
             <div class="container-fluid">
-                
+
                 <div class="row">
                     <div class="col-4">
-                        <form action="{{ route('admin.useradmin.update', $useradmin->id) }}" method="POST">
+                        <form action="{{ route('admin.user.update', $user->id) }}" method="POST">
                             @csrf
                             @method('PATCH')
                             <div class="form-group">
                                 <label for="name">{{ __('Редактирование пользователя') }}</label>
                                 <input type="text" name="name" class="form-control"
-                                    value="{{ __($useradmin->name) }}">
+                                    value="{{ __($user->name) }}">
                                 @error('title')
                                     <div class="text-danger">{{ __($message) }}</div>
                                 @enderror
@@ -39,8 +38,22 @@
                             <div class="form-group">
                                 <label for="email">{{ __('Редактирование имейла') }}</label>
                                 <input type="text" name="email" class="form-control"
-                                value="{{ __($useradmin->email) }}">
+                                    value="{{ __($user->email) }}">
                                 @error('email')
+                                    <div class="text-danger">{{ __($message) }}</div>
+                                @enderror
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>{{ __('Выберите роль') }}</label>
+                                <select name="role" class="form-control">
+                                    @foreach ($roles as $id => $role)
+                                        <option value="{{ $id }}" {{ $user->role ? 'selected' : '' }}>
+                                            {{ $role }}</option>
+                                    @endforeach
+                                </select>
+                                @error('role')
                                     <div class="text-danger">{{ __($message) }}</div>
                                 @enderror
                             </div>
@@ -52,7 +65,6 @@
                 </div>
             </div>
         </section>
-        
+
     </div>
-    
 @endsection

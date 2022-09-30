@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateUseradminRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
    
     public function authorize()
@@ -18,6 +18,7 @@ class UpdateUseradminRequest extends FormRequest
         return [
             'name'=>'required|string',
             'email'=>'required|string|email|unique:users',
+            'role'=>'required|integer',
         ];
     }
 
