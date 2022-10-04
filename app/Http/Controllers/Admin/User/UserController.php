@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Mail\User\PasswordMail;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use App\Http\Middleware\AdminMiddleware;
 
 
@@ -30,8 +34,11 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $data=$request->validated();
-        $data['password'] = Hash::make( $data['password']);
-        User::firstOrCreate(['email'=>$data['email']], $data);
+        $password = Str::random(10);
+        $data['password'] = Hash::make( $password);
+        $user=User::firstOrCreate(['email'=>$data['email']], $data);
+        Mail::to($data['email'])->send(new PasswordMail($password));
+        event(new Registered($user));
         return redirect()->route('admin.user.index');
 
 

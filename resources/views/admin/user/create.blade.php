@@ -45,14 +45,7 @@
                              
                             </div>
 
-                            <div class="form-group">
-                                <label for="password">{{ __('Пароль') }}</label>
-                                <input type="text" name="password" class="form-control"
-                                    placeholder="{{ __('Пароль') }}">
-                                @error('password')
-                                    <div class="text-danger">{{ __($message) }}</div>
-                                @enderror
-                            </div>
+                           
 
                             <div class="form-group">
                                 <div class="form-group">
